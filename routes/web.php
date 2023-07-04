@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SilderController;
+use App\Http\Controllers\Admin\LeaderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     // slider
     Route::resource('slider', SilderController::class);
+    Route::resource('leaders', LeaderController::class);
 
 });
