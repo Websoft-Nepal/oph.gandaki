@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123456789'),
         ]);
+
+        $this->call([
+            SliderSeeder::class,
+        ]);
     }
 }

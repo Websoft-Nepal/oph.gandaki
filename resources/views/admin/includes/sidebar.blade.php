@@ -4,9 +4,9 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                <li> <a class="waves-effect waves-dark" href="{{ route('admin_dashboard') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">{{ __('Silder') }}</span></a>
+                <li> <a class="waves-effect waves-dark" href="{{ route('slider.index') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">{{ __('Silder') }}</span></a>
                 </li>
                 <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
                 </li>

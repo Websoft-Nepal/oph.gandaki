@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('site/assets/image/favicon.ico') }}" type="image/x-icon">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -17,9 +17,6 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>नेपाल सरकार,प्रदेश प्रमुखकाे कार्यालय
-        गण्डकी प्रदेश, पाेखरा</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('site/admin/assets/node_modules/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('site/admin/assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
@@ -38,6 +35,13 @@
 <body>
     <div id="app">
         <main>
+            <div class="fix-header fix-sidebar card-no-border">
+                <div class="preloader">
+                    <div class="loader">
+                        <div class="loader__figure"></div>
+                        <p class="loader__label">नेपाल सरकार,प्रदेश प्रमुखकाे कार्यालय गण्डकी प्रदेश, पाेखरा</p>
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
