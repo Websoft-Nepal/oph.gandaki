@@ -8,20 +8,18 @@
 
             <div class="page-wrapper">
                 <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Bread crumb and right sidebar toggle -->
-                    <!-- ============================================================== -->
-                    <div class="row page-titles">
-                        <div class="col-md-5 align-self-center">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">{{ __('Dashboard') }}</li>
-                                <li class="breadcrumb-item active">{{ __('Slider') }}</li>
-                            </ol>
-                        </div>
 
-                    </div>
-                    <!-- End Bread crumb and right sidebar toggle -->
+                    <button class="btn btn-info mb-5" id="backButton">Back</button>
+                    <script>
+                        // JavaScript
+                        const backButton = document.getElementById('backButton');
 
+                        backButton.addEventListener('click', goBack);
+
+                        function goBack() {
+                        history.back();
+                        }
+                    </script>
 
                     <h3 class="text-weight-bold">{{ __('Create New Slider Image') }}</h3>
 

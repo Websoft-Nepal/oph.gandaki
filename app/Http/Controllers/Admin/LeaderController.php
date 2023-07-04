@@ -17,7 +17,7 @@ class LeaderController extends Controller
     {
         $title = 'Leaders - OPH';
 
-        $leaders = Leader::all();
+        $leaders = Leader::latest()->simplePaginate(8);
 
         return view('admin.leaders.index', compact('title', 'leaders'));
         // return $leaders;
@@ -119,37 +119,30 @@ class LeaderController extends Controller
 
         if($validate)
         {
-            if($validate)
+            $leader->name = $request->name;
+            $leader->position = $request->position;
+            $leader->birthday = $request->birthday;
+            $leader->birth_place = $request->birth_place;
+            $leader->father_name = $request->father_name;
+            $leader->mother_name = $request->mother_name;
+            $leader->contact_no = $request->contact_no;
+            $leader->email = $request->email;
+            $leader->qualification = $request->qualification;
+            $leader->work_exp = $request->work_exp;
+            $leader->political_affairs = $request->political_affairs;
+            $leader->lang = $request->lang;
+            $leader->travel_abroad = $request->travel_abroad;
+            if($request->file('photo'))
             {
-                $leader->name = $request->name;
-                $leader->position = $request->position;
-                $leader->birthday = $request->birthday;
-                $leader->birth_place = $request->birth_place;
-                $leader->father_name = $request->father_name;
-                $leader->mother_name = $request->mother_name;
-                $leader->contact_no = $request->contact_no;
-                $leader->email = $request->email;
-                $leader->qualification = $request->qualification;
-                $leader->work_exp = $request->work_exp;
-                $leader->political_affairs = $request->political_affairs;
-                $leader->lang = $request->lang;
-                $leader->travel_abroad = $request->travel_abroad;
-
-                if($request->file('photo'))
-                {
-                    //delete previous photo
-                    File::delete('site/uploads/leader/'.$leader->photo);
-
-                    $photo = $request->file('photo');
-                    $filename = Str::uuid()->toString() . '-' . time() . '.' . $photo->getClientOriginalExtension();
-                    // // move photo to folder
-                    $photo->move(public_path('site/uploads/leader/'), $filename);
-
-                    $leader->photo = $filename;
-
-                }
-                $leader->update();
+                //delete previous photo
+                File::delete('site/uploads/leader/'.$leader->photo);
+                $photo = $request->file('photo');
+                $filename = Str::uuid()->toString() . '-' . time() . '.' . $photo->getClientOriginalExtension();
+                // // move photo to folder
+                $photo->move(public_path('site/uploads/leader/'), $filename);
+                $leader->photo = $filename;
             }
+            $leader->update();
         }
 
         return redirect()->route('leaders.index')->with('status', 'Successfully Edited!');

@@ -22,6 +22,8 @@
                         </script>
                     @endif
 
+                    <h2>{{ __('LEADER') }}</h2>
+
                     <a class="btn btn-info" href="{{ route('leaders.create') }}">{{ __('Add New Leader') }}</a>
                     
 
@@ -42,9 +44,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($leaders as $leader)
+                                    @php
+                                        $sn = ($leaders->currentPage() - 1) * $leaders->perPage() + $loop->iteration;
+                                    @endphp
                                     <tr>
                                         <td>
-                                            {{ $leader->id }}
+                                            {{ $sn }}
                                         </td>
                                         <td>
                                             <img style="height: 90px; width: 90px;" src="{{ asset('site/uploads/leader/'. $leader->photo) }}" alt="">
@@ -76,7 +81,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $leaders->links() }} --}}
+                        {{ $leaders->links() }}
                     </div>
 
 
