@@ -23,9 +23,9 @@
                     @endif
 
 
-                    <h2>{{ __('News n Event') }}</h2>
+                    <h2>{{ __('Gallery') }}</h2>
 
-                    <a class="btn btn-info" href="{{ route('news.create') }}">{{ __('Add News & Events') }}</a>
+                    <a class="btn btn-info" href="{{ route('gallery.create') }}">{{ __('Add Photo') }}</a>
                     
 
 
@@ -35,38 +35,30 @@
                             <thead>
                                 <tr>
                                     <th>S.N</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Link</th>
+                                    <th>Photo</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($news as $key => $new)
+                                @foreach ($gallery as $key => $item)
                                     @php
-                                        $sn = ($news->currentPage() - 1) * $news->perPage() + $loop->iteration;
+                                        $sn = ($gallery->currentPage() - 1) * $gallery->perPage() + $loop->iteration;
                                     @endphp
                                     <tr>
                                         <td>
                                             {{ $sn }}
                                         </td>
                                         <td>
-                                            {{ $new->title }}
+                                            <img style="height: 90px; width: 90px;" src="{{ asset('site/uploads/gallery/'. $item->photo) }}" alt="">
                                         </td>
                                         <td>
-                                            {{ $new->category->category }}
-                                        </td>
-                                        <td>
-                                            {{ $new->link }}
-                                        </td>
-                                        <td>
-                                            {{ $new->created_at->format('Y-m-d') }}
+                                            {{ $item->created_at->format('Y-m-d') }}
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <a target="_blank" class="btn btn-info mx-1" href="{{ asset('site/uploads/news/'. $new->link) }}">View</a>
-                                                <form action="{{ route('news.destroy', $new->id) }}" method="post">
+                                                <a target="_blank" class="btn btn-info mx-1" href="{{ asset('site/uploads/gallery/'. $item->photo) }}">View</a>
+                                                <form action="{{ route('gallery.destroy', $item->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure you want to delete this slider?')" class="btn btn-danger">Delete</button>
@@ -77,7 +69,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $news->links() }}
+                        {{ $gallery->links() }}
                     </div>
 
                 </div>

@@ -4,23 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\News;
-use App\Models\NewsCategory;
+use App\Models\Gallery;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
-class NewsController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = 'News - OPH';
+        $title = "Gallery - OPH";
+        $gallery = Gallery::simplePaginate(10);
 
 
-        $news = News::with('category')->latest()->simplePaginate(10);
-        return view('admin.news.index', compact('title', 'news'));
+        return view('admin.gallery.index', compact('title','gallery'));
     }
 
     /**
@@ -28,11 +27,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $title = "Add news & event - OPH";
+        $title = 'Add Photo - OPH';
 
-        $news_cats = NewsCategory::all();
-
-        return view('admin.news.create', compact('title', 'news_cats'));
+        return view('admin.gallery.create', compact('title'));
     }
 
     /**
@@ -40,28 +37,24 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'title'     => 'required | min:5 | max:50',
-            'photo'     => 'required | mimes:jpg,png,jpeg,pdf',
-        ]);
+        $gallery = new Gallery;
 
+        $validate = $request->validate([
+            'photo'     => 'required | mimes:jpg,png,jpeg',
+        ]);
         if($validate)
         {
-            $news = new News;
-            $news->title = $request->title;
-            $news->cat_id = $request->category;
-            
             $photo = $request->file('photo');
             $filename = Str::uuid()->toString() . '-' . time() . '.' . $photo->getClientOriginalExtension();
             // move photo to folder
-            $photo->move(public_path('site/uploads/news/'), $filename);
+            $photo->move(public_path('site/uploads/gallery/'), $filename);
 
-            $news->link = $filename;
+            $gallery->photo = $filename;
 
-            $news->save();
+            $gallery->save();
         }
 
-        return redirect()->route('news.index')->with('status', 'Successfully Added!');
+        return redirect()->route('gallery.index')->with('status', 'Photo Added!');
     }
 
     /**
@@ -93,10 +86,10 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
-        $news = News::find($id);
-        File::delete(public_path('site/uploads/news/'.$news->photo));
-        $news->delete();
+        $gallery = Gallery::find($id);
+        File::delete(public_path('site/uploads/gallery/'.$gallery->photo));
+        $gallery->delete();
 
-        return redirect()->route('news.index')->with('status', 'News successfully deleted!');
+        return redirect()->route('gallery.index')->with('status', 'Photo successfully delete!');
     }
 }

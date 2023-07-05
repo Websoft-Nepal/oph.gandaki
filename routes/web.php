@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LeaderController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('staff', StaffController::class);
     Route::resource('newscategory', NewsCategoryController::class);
     Route::resource('news', NewsController::class);
+    Route::resource('gallery', GalleryController::class);
 
 });

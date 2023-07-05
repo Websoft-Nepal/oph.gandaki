@@ -16,6 +16,8 @@
                 </li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('news.index') }}" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">News</span></a>
                 </li>
+                <li> <a class="waves-effect waves-dark" href="{{ route('gallery.index') }}" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Gallery</span></a>
+                </li>
                 <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
                 </li>
             </ul>
