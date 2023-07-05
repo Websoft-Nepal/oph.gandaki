@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\NewsCategoryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ChiefMsgController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +41,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('newscategory', NewsCategoryController::class);
     Route::resource('news', NewsController::class);
     Route::resource('gallery', GalleryController::class);
+    Route::resource('reports', ReportController::class);
+    Route::resource('chiefmsg', ChiefMsgController::class);
 
 });

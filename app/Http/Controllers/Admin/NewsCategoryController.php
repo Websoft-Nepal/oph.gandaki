@@ -102,5 +102,7 @@ class NewsCategoryController extends Controller
         $newscategory->delete();
 
         return redirect()->route('newscategory.index')->with('status', 'category deleted!');
+
+        
     }
 }
