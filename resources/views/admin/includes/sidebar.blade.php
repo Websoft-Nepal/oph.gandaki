@@ -12,9 +12,9 @@
                 </li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('staff.index') }}" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Staff</span></a>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Map</span></a>
+                <li> <a class="waves-effect waves-dark" href="{{ route('newscategory.index') }}" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">News Category</span></a>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Blank</span></a>
+                <li> <a class="waves-effect waves-dark" href="{{ route('news.index') }}" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">News</span></a>
                 </li>
                 <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
                 </li>

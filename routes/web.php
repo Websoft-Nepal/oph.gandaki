@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SilderController;
 use App\Http\Controllers\Admin\LeaderController;
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\NewsCategoryController;
+use App\Http\Controllers\Admin\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +35,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('slider', SilderController::class);
     Route::resource('leaders', LeaderController::class);
     Route::resource('staff', StaffController::class);
+    Route::resource('newscategory', NewsCategoryController::class);
+    Route::resource('news', NewsController::class);
 
 });

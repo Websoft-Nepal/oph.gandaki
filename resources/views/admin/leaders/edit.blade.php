@@ -92,7 +92,7 @@
                                 <label for="lang">Travel Abroad:</label>
                                 <input type="text" class="form-control" name="travel_abroad" id="travel_abroad" value="{{ $leader->travel_abroad }}" placeholder="Enter either you travel abroad before">
                             </div>
-                            <button type="submit" class="btn btn-info">Submit</button>
+                            <button type="submit" class="btn btn-info">Update</button>
                         </form>
                     </div>
                 

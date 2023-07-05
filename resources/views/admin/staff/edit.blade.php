@@ -62,7 +62,7 @@
                                 <label for="mobile">Mobile:</label>
                                 <input type="number" min="0" class="form-control" name="mobile" value="{{ $staff->mobile }}" id="mobile" placeholder="Enter mobile number">
                             </div>
-                            <button type="submit" class="btn btn-info">Add</button>
+                            <button type="submit" class="btn btn-info">Update</button>
                         </form>
                     </div>
                 

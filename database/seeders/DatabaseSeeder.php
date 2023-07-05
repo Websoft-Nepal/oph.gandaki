@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             SliderSeeder::class,
             LeaderSeeder::class,
             StaffSeeder::class,
+            NewsCategorySeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

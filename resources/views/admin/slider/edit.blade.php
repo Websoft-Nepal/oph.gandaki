@@ -40,7 +40,7 @@
                                 accept=".jpg,.jpeg,.png">
                             <small class="form-text text-muted">Accepted formats: JPG, JPEG, PNG.</small>
                         </div>
-                        <button type="submit" class="btn btn-info">Add</button>
+                        <button type="submit" class="btn btn-info">Update</button>
                     </form>
                     
 
