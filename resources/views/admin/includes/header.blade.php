@@ -24,10 +24,7 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
-                    <form class="app-search">
-                        <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
-                </li>
+                
             </ul>
             <!-- ============================================================== -->
             <!-- User profile and search -->
@@ -37,7 +34,8 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown u-pro">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="{{ route('profile.index') }}">
+                        <img src="{{ asset('site/uploads/admin/'. Auth::user()->photo) }}" alt="">
                         <span class="hidden-md-down">{{ Auth::user()->name }}</span>
                     </a>
                 </li>

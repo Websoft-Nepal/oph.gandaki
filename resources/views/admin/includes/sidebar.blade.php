@@ -22,11 +22,18 @@
                 </li>
                 <li> <a class="waves-effect waves-dark" href="{{ route('chiefmsg.index') }}" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu">Chief Message</span></a>
                 </li>
-                <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
-                </li>
             </ul>
             <div class="text-center m-t-30">
-                <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn-info hidden-md-down"> Logout</a>
+                {{-- <a href="https://wrappixel.com/templates/adminwrap/" class="btn waves-effect waves-light btn-info hidden-md-down"> Logout</a> --}}
+                <a class="dropdown-item bg-info text-white" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                </form>
             </div>
         </nav>
         <!-- End Sidebar navigation -->

@@ -64,7 +64,7 @@
                                             {{ $leader->birthday }}
                                         </td>
                                         <td>
-                                            {{ \Illuminate\Support\Carbon::parse($leader->created_at)->diffForHumans() }}
+                                            {{ $leader->created_at->format('Y-m-d') }}
                                         </td>
                                         <td>
                                             <div class="d-flex">

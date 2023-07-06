@@ -69,7 +69,7 @@
                                             {{ $staff->mobile }}
                                         </td>
                                         <td>
-                                            {{ \Illuminate\Support\Carbon::parse($staff->created_at)->diffForHumans() }}
+                                            {{ $staff->created_at->format('Y-m-d') }}
                                         </td>
                                         <td>
                                             <div class="d-flex">

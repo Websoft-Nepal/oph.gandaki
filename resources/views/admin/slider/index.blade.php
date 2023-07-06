@@ -39,6 +39,7 @@
                                     <th>S.N</th>
                                     <th>photo</th>
                                     <th>Title</th>
+                                    <th>Status</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -59,7 +60,26 @@
                                             {{ $slider->title }}
                                         </td>
                                         <td>
-                                            {{ \Illuminate\Support\Carbon::parse($slider->created_at)->diffForHumans() }}
+                                            <div>
+                                                @if ($slider->status == '0')
+                                                    <form action="{{ route('slider_status', $slider->id) }}" method="post">
+                                                        @csrf
+                                                        @method('put')
+                                                        <input type="hidden" name="slider_status" value="1">
+                                                        <button class="btn btn-info">Active</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('slider_status', $slider->id) }}" method="post">
+                                                        @csrf
+                                                        @method('put')
+                                                        <input type="hidden" name="slider_status" value="0">
+                                                        <button class="btn btn-secondary">Inactive</button>
+                                                    </form>
+                                                @endif
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ $slider->created_at->format('Y-m-d') }}
                                         </td>
                                         <td>
                                             <div class="d-flex">

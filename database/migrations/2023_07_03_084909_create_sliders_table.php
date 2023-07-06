@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('photo');
+            $table->boolean('status')->default('1');
             $table->timestamps();
         });
     }

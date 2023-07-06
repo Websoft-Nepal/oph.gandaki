@@ -8,7 +8,7 @@ use App\Models\Slider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
-class SilderController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -120,6 +120,17 @@ class SilderController extends Controller
 
         return redirect()->route('slider.index')->with('status', 'Slider successfully updated!');
     }
+
+    public function slider_status(Request $request, string $id)
+    {
+        $slider = Slider::find($id);
+        $slider->status = $request->slider_status;
+
+        $slider->update();
+
+        return redirect()->route('slider.index');
+    }
+
 
     /**
      * Remove the specified resource from storage.
