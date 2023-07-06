@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//public 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ChiefController;
+use App\Http\Controllers\NewsEventController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GalleryPhotoController;
+use App\Http\Controllers\ReportShowController;
+use App\Http\Controllers\ShowLeaderController;
+
+//admin
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\LeaderController;
 use App\Http\Controllers\Admin\StaffController;
@@ -22,9 +32,21 @@ use App\Http\Controllers\Admin\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+//public
+Route::get('/', [IndexController::class, 'index'])->name('p_index');
+Route::get('/leader/{id}', [ShowLeaderController::class, 'index'])->name('p_show_leader');
+Route::get('/chief_details', [ChiefController::class, 'chief_details'])->name('p_chief_details');
+Route::get('/chief_message', [ChiefController::class, 'chief_message'])->name('p_chief_message');
+Route::get('/news', [NewsEventController::class, 'index'])->name('p_all_news_events');
+Route::get('/news/{id}', [NewsEventController::class, 'show_news_by_cat'])->name('p_show_news_by_cat');
+Route::get('/staffs', [EmployeeController::class, 'index'])->name('p_employee_details');
+Route::get('/gallery', [GalleryPhotoController::class, 'index'])->name('p_gallery');
+Route::get('/reports', [ReportShowController::class, 'index'])->name('p_reports');
+Route::get('/organization_structure', function(){
+    $title = "Organization Structure";
+    return view('organization', compact('title'));
+})->name('organization_structure');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

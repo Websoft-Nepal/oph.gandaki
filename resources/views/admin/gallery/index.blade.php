@@ -35,6 +35,7 @@
                             <thead>
                                 <tr>
                                     <th>S.N</th>
+                                    <td>Title</td>
                                     <th>Photo</th>
                                     <th>Created At</th>
                                     <th>Action</th>
@@ -48,6 +49,9 @@
                                     <tr>
                                         <td>
                                             {{ $sn }}
+                                        </td>
+                                        <td>
+                                            {{ $item->title }}
                                         </td>
                                         <td>
                                             <img style="height: 90px; width: 90px;" src="{{ asset('site/uploads/gallery/'. $item->photo) }}" alt="">

@@ -40,10 +40,14 @@ class GalleryController extends Controller
         $gallery = new Gallery;
 
         $validate = $request->validate([
+            'title'     => 'required | min:5 | max:150',
             'photo'     => 'required | mimes:jpg,png,jpeg',
         ]);
         if($validate)
         {
+            
+            $gallery->title = $request->title;
+
             $photo = $request->file('photo');
             $filename = Str::uuid()->toString() . '-' . time() . '.' . $photo->getClientOriginalExtension();
             // move photo to folder

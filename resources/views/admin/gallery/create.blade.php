@@ -26,6 +26,13 @@
                         <form method="post" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
+                                @error('title')
+                                    <div class="bg-danger text-white p-2">{{ $message }}</div>
+                                @enderror
+                                <label for="title">Title:</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" placeholder="Enter Title">
+                            </div>
+                            <div class="form-group">
                                 @error('photo')
                                     <div class="bg-danger text-white p-2">{{ $message }}</div>
                                 @enderror
