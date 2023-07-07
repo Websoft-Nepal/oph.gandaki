@@ -21,7 +21,7 @@
                         }
                     </script>
 
-                    <h3 class="text-weight-bold">{{ __('Create New Slider Image') }}</h3>
+                    <h3 class="fw-bold">{{ __('Edit Slider Image') }}</h3>
 
                     {{-- form field to add new slider --}}
                     <form id="uploadForm" action="{{ route('slider.update', $slider->id) }}" method="POST" enctype="multipart/form-data">

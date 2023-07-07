@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <a href="{{ route('p_reports') }}" class="nav-item nav-link">Report</a>
-                <a href="contact.php" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
                 <a href="{{ route('p_gallery') }}" class="nav-item nav-link">Photo Gallery</a>
             </div>
             <img src="https://oph.gandaki.gov.np/site/img/flag.gif" width="40">

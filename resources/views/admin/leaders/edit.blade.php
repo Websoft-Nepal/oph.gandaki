@@ -31,7 +31,7 @@
                                     <div class="bg-danger text-white p-2">{{ $message }}</div>
                                 @enderror
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $leader->name }}" placeholder="Enter your name">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ $leader->name }}" placeholder="Enter name">
                             </div>
                             <div class="form-group">
                                 <label for="position">Position:</label>
@@ -60,6 +60,7 @@
                                 <label for="photo">Photo:</label><br />
                                 <img style="height: 90px; width: 90px;" src="{{ asset('site/uploads/leader/'. $leader->photo) }}" alt="">
                                 <input type="file" class="form-control-file" name="photo" id="photo" accept=".jpg,.jpeg,.png">
+                                <small class="form-text text-muted">Accepted formats: JPG, JPEG, PNG.</small>
                             </div>
                             <div class="form-group">
                                 <label for="father_name">Father's Name:</label>

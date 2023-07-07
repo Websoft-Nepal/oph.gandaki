@@ -50,7 +50,7 @@ Route::get('/organization_structure', function(){
     return view('organization', compact('title'));
 })->name('organization_structure');
 
-Route::get('/contact', [ContactUsFormController::class, 'createForm']);
+Route::get('/contact', [ContactUsFormController::class, 'createForm'])->name('contact');
 Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
 
 

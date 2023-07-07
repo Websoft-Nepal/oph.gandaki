@@ -7,7 +7,7 @@ class ContactUsFormController extends Controller {
     // Create Contact Form
     public function createForm(Request $request) {
 
-        $title = "asd";
+        $title = "Contact us - OPH";
 
       return view('contact', compact('title'));
     }

@@ -22,14 +22,9 @@
                         </script>
                     @endif
 
-                    <h2>{{ __('SLIDER') }}</h2>
+                    <h2 class="fw-bold">{{ __('SLIDER') }}</h2>
 
-                    <a class="btn btn-info" href="{{ route('slider.create') }}">{{ __('Add New Slider Image') }}</a>
-                    
-                    <div class="my-2">
-                        <span class="text-danger">Note:</span>
-                        <span class="text-black">{{ __('First 3 newly added sliders will display in home page.') }}</span>
-                    </div>
+                    <a class="btn btn-info" href="{{ route('slider.create') }}">{{ __('Add Slider Image') }}</a>
 
                     {{-- show data --}}
                     <div class="table-responsive m-t-20 no-wrap">

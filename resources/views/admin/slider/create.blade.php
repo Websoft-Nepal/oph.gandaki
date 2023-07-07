@@ -21,7 +21,7 @@
                         }
                     </script>
 
-                    <h3 class="text-weight-bold">{{ __('Create New Slider Image') }}</h3>
+                    <h3 class="text-weight-bold">{{ __('Create Slider Image') }}</h3>
 
                     {{-- form field to add new slider --}}
                     <form id="uploadForm" action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                     </form>
 
                     <!-- JavaScript -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
                     <script>
                         $(document).ready(function() {
                             // Form validation

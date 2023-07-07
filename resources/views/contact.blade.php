@@ -3,7 +3,7 @@
 @section('content')
     @include('includes.header')
 
-    <section class="ftco-section">
+    <section class="ftco-section my-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-12">

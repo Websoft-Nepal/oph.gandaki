@@ -27,7 +27,7 @@
                                     @foreach ($sliders as $slider)
                                         <div class="carousel-item active">
 
-                                            <img src="{{ $slider->photo }}"
+                                            <img src="{{ asset('site/uploads/slider/'. $slider->photo) }}"
                                                 style="height: 370px; width: 100%;" class="carousel-image img-fluid">
 
                                             <div class="carousel-caption d-flex flex-column justify-content-end">

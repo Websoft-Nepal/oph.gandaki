@@ -18,7 +18,7 @@ class SliderController extends Controller
         $title = 'Slider - OPH';
 
         $sliders = Slider::orderBy('id', 'desc')
-                            ->simplePaginate(3);
+                            ->simplePaginate(10);
 
 
         return view('admin.slider.index', compact('title', 'sliders'));
