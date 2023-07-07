@@ -9,6 +9,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\ReportShowController;
 use App\Http\Controllers\ShowLeaderController;
+use App\Http\Controllers\ContactUsFormController;
+
 
 //admin
 use App\Http\Controllers\Admin\SliderController;
@@ -47,6 +49,9 @@ Route::get('/organization_structure', function(){
     $title = "Organization Structure";
     return view('organization', compact('title'));
 })->name('organization_structure');
+
+Route::get('/contact', [ContactUsFormController::class, 'createForm']);
+Route::post('/contact', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
