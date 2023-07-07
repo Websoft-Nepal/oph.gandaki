@@ -34,7 +34,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="position">Position:</label>
-                                <input type="text" class="form-control" id="position" name="position" value="{{ old('position') }}" placeholder="Enter your position">
+                                {{-- <input type="text" class="form-control" id="position" name="position" value="{{ old('position') }}" placeholder="Enter your position"> --}}
+                                <select class="form-select" name="position" aria-label="Select option">
+                                    <option selected>Select an option</option>
+                                    <option value="प्रदेश प्रमुख">प्रदेश प्रमुख</option>
+                                    <option value="सचिव">सचिव</option>
+                                    <option value="प्रवक्ता">प्रवक्ता</option>
+                                  </select>                                  
                             </div>
                             <div class="form-group">
                                 @error('birthday')

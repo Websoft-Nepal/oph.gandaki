@@ -21,7 +21,7 @@ class NewsEventController extends Controller
 
         $news = News::whereHas('category', function ($query) use ($id) {
             $query->where('id', $id);
-        })->paginate(10);
+        })->latest()->paginate(10);
 
         $news_cat = NewsCategory::find($id);
 

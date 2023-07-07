@@ -17,12 +17,12 @@ class IndexController extends Controller
         $sliders = Slider::where('status', '0')->get();
 
         //getting categories
-        $news_cat = NewsCategory::all();
+        $news_cats = NewsCategory::all();
 
         //getting news
         $news = News::all();
 
         // return $news;
-        return view('index', compact('title', 'sliders'));
+        return view('index', compact('title', 'sliders', 'news_cats', 'news'));
     }
 }

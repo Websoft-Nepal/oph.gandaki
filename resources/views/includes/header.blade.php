@@ -21,16 +21,6 @@
                     <small>+९७७ ६१ ४६७५५५</small>
                 </div>
             </div>
-            <div class="col-lg-5 px-5 text-end">
-
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a href="https://oph.gandaki.gov.np/language/switch/en"><img
-                            src="https://oph.gandaki.gov.np/site/images/flags/United-States.png"><span> English
-                            |</span></a>
-                    <a href="https://oph.gandaki.gov.np/language/switch/np"><img
-                            src="https://oph.gandaki.gov.np/site/images/flags/np.png"><span> नेपाली</span></a>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Topbar End -->
@@ -51,8 +41,8 @@
                 <div class="nav-item dropdown">
                     <a href="about.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Province Chief</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="about.php" class="dropdown-item">About Chief of Province</a>
-                        <a href="chiefmsg.php" class="dropdown-item">Message from Chief</a>
+                        <a href="{{ route('p_chief_details') }}" class="dropdown-item">About Chief of Province</a>
+                        <a href="{{ route('p_chief_message') }}" class="dropdown-item">Message from Chief</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

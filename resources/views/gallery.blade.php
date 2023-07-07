@@ -14,7 +14,7 @@
 
             </div>
             <div class="row g-4">
-                @foreach ($galleries as $item)
+                {{-- @foreach ($galleries as $item)
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="row g-4">
                             <div class="col-12">
@@ -31,8 +31,33 @@
                             </div>
                         </div>
                     </div>
+                @endforeach --}}
+            </div>
+
+            
+            <div class="row g-4">
+                @foreach ($galleries as $item)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <a class="animal-item"
+                                    href="{{ asset('site/uploads/gallery/' . $item->photo) }}"
+                                    data-lightbox="animal">
+                                    <div class="position-relative">
+                                        <img class="img-fluid"
+                                            src="{{ asset('site/uploads/gallery/' . $item->photo) }}"
+                                            alt="" />
+                                        <div class="animal-text p-4">
+                                            <h5 class="text-white mb-0">माननीय प्रदेश प्रमुखज्युको पदवहाली कार्यक्रम</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
+
             <div class="text-black">
                 {{ $galleries->links() }}
             </div>

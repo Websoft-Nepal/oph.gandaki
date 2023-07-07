@@ -111,180 +111,68 @@
             <!-- About End -->
 
             <!-- News Start -->
-            <div class="container-xxl py-4 news-section p-0">
-                <div class="container">
-                    <h1 class="text-primary display-5 mb-4 text-center">सुचना तथा अन्य समाचारहरु</h1>
-                    <div class="news-section py-4 px-4" style="border: 1px solid rgb(190, 189, 189); border-radius: 10px;">
-                        <button id="showDiv1"> सुचना तथा समाचार</button>
-                        <button id="showDiv2">एेन तथा नियमहरू</button>
-                        <button id="showDiv3">प्रेस विज्ञप्ती</button>
-                        <hr style="color: rgb(190, 189, 189);">
-                        <div id="div1">
-                            <table class="table" style="border: 2px solid #7a7272" ;>
-                                <style>
-                                    .table a {
-                                        color: #337ab7;
-                                    }
-
-                                    .table a:hover {
-                                        color: #930b0f;
-                                    }
-                                </style>
+            <ul class="nav nav-tabs my-5" id="myTab" role="tablist">
+                @foreach($news_cats as $index => $category)
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link{{ $index === 0 ? ' active' : '' }}" id="tab{{ $category->id }}-tab" data-bs-toggle="tab" data-bs-target="#tab{{ $index + 1 }}" type="button" role="tab" aria-controls="tab{{ $index + 1 }}" aria-selected="{{ $index === 0 ? 'true' : 'false' }}">{{ $category->category }}</button>
+                  </li>
+                @endforeach
+              </ul>
+              
+              <div class="tab-content" id="myTabContent">
+                @foreach($news_cats as $index => $category)
+                    <div class="tab-pane fade{{ $index === 0 ? ' show active' : '' }}" id="tab{{ $category->id }}" role="tabpanel" aria-labelledby="tab{{ $index + 1 }}-tab">
+                        <!-- Tab {{ $index + 1 }} content goes here -->
+                        @php
+                            $id = $category->id;
+                            $news_by_cat = App\Models\News::whereHas('category', function ($query) use ($id) {
+                                $query->where('id', $id);
+                            })->latest()->paginate(3);
+                        @endphp
+                        <div class="table-responsive m-t-20 no-wrap">
+                            <table class="table vm no-th-brd pro-of-month">
                                 <thead>
                                     <tr>
+                                        <th>S.N</th>
                                         <th>Title</th>
-                                        <th>Publish Date</th>
+                                        <th>Category</th>
+                                        <th>Uploaded</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ती</td>
-                                        <td>2022-12-29</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/54">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>कार्यालयकाे वेभसाइट संचालन सम्बन्धमा</td>
-                                        <td>2018-07-15</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/16">View Detail</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($news_by_cat as $key => $item)
+                                        @php
+                                            $sn = ($news_by_cat->currentPage() - 1) * $news_by_cat->perPage() + $loop->iteration;
+                                        @endphp
+                                        <tr>
+                                            <td>
+                                                {{ $sn }}
+                                            </td>
+                                            <td>
+                                                {{ $item->title }}
+                                            </td>
+                                            <td>
+                                                {{ $item->category->category }}
+                                            </td>
+                                            <td>
+                                                {{ $item->created_at->format('Y-m-d') }}
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a target="_blank" class="text-primary" href="{{ asset('site/uploads/news/'. $item->link) }}">View</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                            <a href="https://oph.gandaki.gov.np/news/10" class="pull-right btn-lg btn-primary text-light">
-                                अन्य सुचना तथा समाचार
-                            </a>
+                            {{ $news_by_cat->links() }}
                         </div>
-                        <div id="div2" class="myDiv">
-                            <table class="table" style="border: 2px solid #7a7272" ;>
-                                <style>
-                                    .table a {
-                                        color: #337ab7;
-                                    }
-
-                                    .table a:hover {
-                                        color: #930b0f;
-                                    }
-
-                                    .myDiv {
-                                        display: none;
-                                    }
-                                </style>
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Publish Date</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Act and Regulations</td>
-                                        <td>2023-06-20</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/62">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>List of Acts</td>
-                                        <td>2021-10-24</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/52">View Detail</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="https://oph.gandaki.gov.np/news/11" class="pull-right btn-lg btn-primary text-light">
-                                अन्य एेन तथा नियमहरू
-                            </a>
-                        </div>
-                        <div id="div3" class="myDiv">
-                            <table class="table" style="border: 2px solid #7a7272" ;>
-                                <style>
-                                    .table a {
-                                        color: #337ab7;
-                                    }
-
-                                    .table a:hover {
-                                        color: #930b0f;
-                                    }
-
-                                    .myDiv {
-                                        display: none;
-                                    }
-                                </style>
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Publish Date</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Press Release</td>
-                                        <td>2023-06-13</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/61">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ति</td>
-                                        <td>2023-05-23</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/59">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ती</td>
-                                        <td>2023-05-23</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/58">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ती</td>
-                                        <td>2023-05-15</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/57">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ती</td>
-                                        <td>2023-05-15</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/56">View Detail</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>प्रेस विज्ञप्ती</td>
-                                        <td>2022-12-29</td>
-                                        <td><a href="https://oph.gandaki.gov.np/information-detail/53">View Detail</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <a href="https://oph.gandaki.gov.np/news/14" class="pull-right btn-lg btn-primary text-light">
-                                अन्य प्रेस विज्ञप्ती
-                                <script>
-                                    $(document).ready(function() {
-                                        $("#showDiv1").click(function() {
-                                            $(".myDiv").hide(); // Hide all divs
-                                            $("#div1").show(); // Show div1
-                                        });
-
-                                        $("#showDiv2").click(function() {
-                                            $(".myDiv").hide();
-                                            $("#div1").hide(); // Hide all divs
-                                            $("#div2").show(); // Show div2
-                                        });
-
-                                        $("#showDiv3").click(function() {
-                                            $(".myDiv").hide(); // Hide all divs
-                                            $("#div3").show(); // Show div3
-                                        });
-                                    });
-                                </script>
-                            </a>
-                        </div>
-
                     </div>
-                </div>
-            </div>
+                @endforeach
+              </div>              
+              
             <!-- News End -->
         </div>
     </div>

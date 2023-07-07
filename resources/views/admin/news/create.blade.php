@@ -38,7 +38,7 @@
                                 @enderror
                                 <label for="category">Category:</label>
                                 
-                                <select class="form-control" name="category">
+                                <select class="form-select" name="category" aria-label="Select option">
                                     @foreach ($news_cats as $news_cat)
                                         <option value="{{ $news_cat->id }}">{{ $news_cat->category }}</option>
                                     @endforeach

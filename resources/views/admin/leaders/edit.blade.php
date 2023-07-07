@@ -22,7 +22,7 @@
                     </script>
 
                     <div class="mx-5">
-                        <h2>Add New Leader</h2>
+                        <h2>Edit Leader</h2>
                         <form method="post" action="{{ route('leaders.update', $leader->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -35,7 +35,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="position">Position:</label>
-                                <input type="text" class="form-control" id="position" name="position" value="{{ $leader->position }}" placeholder="Enter your position">
+                                {{-- <input type="text" class="form-control" id="position" name="position" value="{{ $leader->position }}" placeholder="Enter your position"> --}}
+                                <select class="form-select" name="position" aria-label="Select option">
+                                    <option {{ $leader->position == 'प्रदेश प्रमुख' ? 'selected' : '' }} value="प्रदेश प्रमुख">प्रदेश प्रमुख</option>
+                                    <option {{ $leader->position == 'सचिव' ? 'selected' : '' }} value="सचिव">सचिव</option>
+                                    <option {{ $leader->position == 'प्रवक्ता' ? 'selected' : '' }} value="प्रवक्ता">प्रवक्ता</option>
+                                  </select> 
                             </div>
                             <div class="form-group">
                                 @error('birthday')
